@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+
+    /* UI fonts */
+    @import url('https://fonts.googleapis.com/css?family=Alegreya+Sans+SC');
+
+    /* Poem fonts */
+    @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Anton|Bowlby+One|Gravitas+One|Imprima|Kaushan+Script|Lora|Montserrat:500');
+
+    h1 {
+      size: 12pt;
+      font-family: 'Alegreya Sans SC', sans-serif;
+      font-style: bold;
+      color: black;
+      z-index: 0;
+      padding: 0 !important;
+    }
+    .flexbox {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      padding-top: 10%;
+    }
+    .flexleft {
+      text-align: right;
+      padding-right: 0px;
+      flex: 1 1 34%;
+      height: 70px;
+    }
+    .flexright {
+      text-align: left;
+      border-left: solid 1px rgb(0,0,0, 0.3);
+      padding-left: 0px;
+      flex: 1 1 34%;
+      height: 70px;
+    }
+    .arrow {
+      padding-top: 1%;
+      padding-left: 10px;
+      font-size: 20pt;
+      font-style: bold;
+      color: rgb(0,0,0, 0.3)
+    }
+    .form {
+      padding-top: 30px;
+      padding-left: 30px;
+    }
+    .poem {
+
+    }
+    #pagetitle {
+      font-size: 30pt !important;
+      font-family: 'Alegreya Sans SC', sans-serif;
+      font-style: bold;
+      color: black;
+
+    }
+    #formtext {
+      font-family: 'Alegreya Sans SC', sans-serif;
+      padding-top: 50px !important;
+    }
+    #about {
+      font-family: 'Alegreya Sans SC', sans-serif;
+      float: center;
+    }
+    #rightSide::first-letter {
+      color: red;
+    }
+    #slideout {
+      position: fixed;
+      top: 10px;
+      left: 0;
+      -webkit-transition-duration: 1s;
+      -moz-transition-duration: 1s;
+      -o-transition-duration: 1s;
+      transition-duration: 1s;
+      background: rgb(255, 255, 255, 0.95);
+    }
+    #slideout_inner {
+      position: fixed;
+      top: 10px;
+      left: -250px;
+      padding-right: 30px;
+      -webkit-transition-duration: 1s;
+      -moz-transition-duration: 1s;
+      -o-transition-duration: 1s;
+      transition-duration: 1s;
+      background: rgb(255, 255, 255, 0.95);
+    }
+    #slideout:hover {
+      left: 250px;
+    }
+    #slideout:hover #slideout_inner {
+      left: 0;
+
+    }
+    </style>
+
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded",function changeColor() {
+      var paragraphs = document.getElementsByClassName("poem");
+
+            for(var i = 0; i < paragraphs.length; i++)
+            {
+                var innerText = paragraphs[i].innerText;
+                var innerTextSplit = innerText.split("");
+                paragraphs[i].innerText = ""
+
+                for(var j = 0; j < innerTextSplit.length; j++) {
+                    var randomColor = getRandomColor();
+                    var randomSize = getFontSize();
+                    var font = getRandomFont();
+
+                    innerTextSplit[j] = '<span style="color: ' + randomColor + ';' + font + ';' + 'font-size:' + randomSize + 'pt' + '">' + innerTextSplit[j] + '</span>';
+                    paragraphs[i].innerHTML += innerTextSplit[j];
+                }
+            }
+        });
+
+        //Converts a single RGB value to HEX (thanks to Tim Down at https://stackoverflow.com/a/5624139 for this)
+        function componentToHex(c) {
+            var hex = c.toString(16);
+            return hex.length == 1 ? "0" + hex : hex;
+        };
+        // Formats into a HEX-style string
+        function rgbToHex(r, g, b) {
+            return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+        }
+        // Random wit
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        function getRandomColor() {
+            if (getRandomInt(0, 10) < 2) {
+                var rbgNum = getRandomInt(0, 100);
+            }
+            else {
+                var rbgNum = 0;
+            }
+            color = componentToHex(rgbToHex(rbgNum, rbgNum, rbgNum));
+            return color;
+        };
+        function getFontSize() {
+          randomChoice = getRandomInt(0, 5);
+          if (randomChoice == 0) {
+              var size = getRandomInt(70, 120);
+          }
+          else if (randomChoice == 1) {
+              var size = getRandomInt(40, 60);
+          }
+          else if (randomChoice == 2) {
+              var size = getRandomInt(14, 30);
+          }
+          else {
+              var size = getRandomInt(12, 20);
+          }
+          return size;
+        }
+        function getRandomFont() {
+          randomChoice = getRandomInt(0, 10);
+          if (randomChoice == 0) {
+              var font = "font-family: 'Abril Fatface', cursive;";
+          }
+          else if (randomChoice == 1) {
+              var font = "font-family: 'Anton', sans-serif;";
+          }
+          else if (randomChoice == 2) {
+              var font = "font-family: 'Bowlby One', cursive;";
+          }
+          else if (randomChoice == 3) {
+              var font = "font-family: 'Gravitas One', cursive;";
+          }
+          else if (randomChoice == 4) {
+              var font = "font-family: 'Imprima', sans-serif;";
+          }
+          else if (randomChoice == 5) {
+              var font = "font-family: 'Kaushan Script', cursive;";
+          }
+          else if (randomChoice == 6) {
+              var font = "font-family: 'Montserrat', sans-serif;";
+          }
+          else {
+              var font = "font-family: 'Lora', serif;";
+          }
+          return font;
+        }
+
+    </script>
+
+  </head>
+
+   <body>
+
+     <div id="slideout">
+       <!-- <img src="/images/hex3.png" alt="I Ching Hexagram 3" /> -->
+       <div class="arrow">--></div>
+       <div id="slideout_inner">
+         <form id="slideout_inner" class="form" action = "http://localhost:5000/" method = "POST">
+           <div id="pagetitle">Prtty Mes</div><br>
+           <a id="about" href="/about.html">what is this?</a>
+           <p id="formtext">Keyword <input type="text" name="keyword" /></p>
+           <p><input type="submit" value="submit" /></p>
+         </form>
+       </div>
+     </div>
+
+      <div class="flexbox">
+        {% for item in poem %}
+            {% if (loop.index0 == 0) or (loop.index0 is even) %}
+                <div class="flexleft">
+                  <div class="poem">{{ poem[loop.index0] }}</div><br>
+                </div>
+            {% else %}
+                <div class="flexright">
+                  <div id="rightSide" class="poem">{{ poem[loop.index0] }}</div><br>
+                </div>
+            {% endif %}
+        {% endfor %}
+      </div>
+   </body>
+
+</html>
