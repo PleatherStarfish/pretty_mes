@@ -9,6 +9,11 @@ def index():
     if request.method == 'POST':
         keyword = request.form['keyword']
     text = open('text.txt', 'r').read()
+    if request.method == 'POST':
+        user_entered_text = request.form['text']
+        if (len(user_entered_text) > 1000):
+            text = user_entered_text
+
     wingSparsity = 10 # How many words do we want in the "wings" on either side of the keyword spine?
 
     def match_letters(letter1, letter2):
