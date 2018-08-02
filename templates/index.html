@@ -134,35 +134,40 @@
       float: center;
     }
     </style>
-
     <script type="text/javascript">
     document.addEventListener("DOMContentLoaded",function changeColor() {
-      var paragraphs = document.getElementsByClassName("poem");
-      var typography = true;
-
-            for(var i = 0; i < paragraphs.length; i++)
-            {
-                var innerText = paragraphs[i].innerText;
-                var innerTextSplit = innerText.split("");
-                paragraphs[i].innerText = ""
-
-                for(var j = 0; j < innerTextSplit.length; j++) {
-                  if (typography) {
-                    var randomColor = getRandomColor();
-                    var randomSize = getFontSize();
-                    var font = getRandomFont();
-                  }
-                  else {
-                    var randomColor = "black";
-                    var randomSize = 14;
-                    var font = "font-family: 'Lora', serif;";
-                  }
-
-                    innerTextSplit[j] = '<span style="color: ' + randomColor + ';' + font + ';' + 'font-size:' + randomSize + 'pt' + '">' + innerTextSplit[j] + '</span>';
-                    paragraphs[i].innerHTML += innerTextSplit[j];
-                }
-            }
+      typographyBool = true;
+      randomTypog(typographyBool);
         });
+
+        function randomTypog(typographyBool) {
+          var paragraphs = document.getElementsByClassName("poem");
+          var typography = typographyBool;
+
+                for(var i = 0; i < paragraphs.length; i++)
+                {
+                    var innerText = paragraphs[i].innerText;
+                    var innerTextSplit = innerText.split("");
+                    paragraphs[i].innerText = ""
+
+                    for(var j = 0; j < innerTextSplit.length; j++) {
+                      if (typography) {
+                        var randomColor = getRandomColor();
+                        var randomSize = getFontSize();
+                        var font = getRandomFont();
+                      }
+                      else {
+                        var randomColor = "black";
+                        var randomSize = 12;
+                        var font = "font-family: 'Lora', serif;";
+                      }
+
+                        innerTextSplit[j] = '<span style="color: ' + randomColor + ';' + font + ';' + 'font-size:' + randomSize + 'pt' + '">' + innerTextSplit[j] + '</span>';
+                        paragraphs[i].innerHTML += innerTextSplit[j];
+                    }
+                }
+
+        }
 
         //Converts a single RGB value to HEX (thanks to Tim Down at https://stackoverflow.com/a/5624139 for this)
         function componentToHex(c) {
@@ -172,11 +177,13 @@
         // Formats into a HEX-style string
         function rgbToHex(r, g, b) {
             return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-        }
+        };
+
         // Random wit
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
+        };
+
         function getRandomColor() {
             if (getRandomInt(0, 10) < 2) {
                 var rbgNum = getRandomInt(0, 100);
@@ -187,110 +194,66 @@
             color = componentToHex(rgbToHex(rbgNum, rbgNum, rbgNum));
             return color;
         };
+
         function getFontSize() {
           randomChoice = getRandomInt(0, 10);
-          if (randomChoice == 0) {
+          switch (randomChoice) {
+            case 0:
               var size = getRandomInt(70, 120);
-          }
-          else if (randomChoice == 1) {
+              break;
+            case 1:
               var size = getRandomInt(40, 60);
-          }
-          else if (randomChoice == 2) {
+              break;
+            case 2:
               var size = getRandomInt(14, 30);
-          }
-          else {
+              break;
+            default:
               var size = getRandomInt(10, 14);
           }
           return size;
-        }
+        };
+
         function getRandomFont() {
           randomChoice = getRandomInt(0, 20);
-          if (randomChoice == 0) {
-              var font = "font-family: 'Abril Fatface', cursive;";
-          }
-          else if (randomChoice == 1) {
-              var font = "font-family: 'Anton', sans-serif;";
-          }
-          else if (randomChoice == 2) {
-              var font = "font-family: 'Bowlby One', cursive;";
-          }
-          else if (randomChoice == 3) {
-              var font = "font-family: 'Gravitas One', cursive;";
-          }
-          else if (randomChoice == 4) {
-              var font = "font-family: 'Imprima', sans-serif;";
-          }
-          else if (randomChoice == 5) {
-              var font = "font-family: 'Kaushan Script', cursive;";
-          }
-          else if (randomChoice == 6) {
-              var font = "font-family: 'Montserrat', sans-serif;";
-          }
-          else {
-              var font = "font-family: 'Lora', serif;";
+          switch (randomChoice) {
+            case 0:
+                var font = "font-family: 'Abril Fatface', cursive;";
+                break;
+            case 1:
+                var font = "font-family: 'Anton', sans-serif;";
+                break;
+            case 2:
+                var font = "font-family: 'Bowlby One', cursive;";
+                break;
+            case 3:
+                var font = "font-family: 'Gravitas One', cursive;";
+                break;
+            case 4:
+                var font = "font-family: 'Imprima', sans-serif;";
+                break;
+            case 5:
+                var font = "font-family: 'Kaushan Script', cursive;";
+                break;
+            case 6:
+                var font = "font-family: 'Montserrat', sans-serif;";
+                break;
+            default:
+                var font = "font-family: 'Lora', serif;";
           }
           return font;
-        }
+        };
+
         function typographyOnOff() {
             var checkBox = document.getElementById("myCheck");
-            console.log(document.getElementById("myCheck").checked);
             if (checkBox.checked == true) {
-              console.log("typography on");
-                var typography = true;
-                var paragraphs = document.getElementsByClassName("poem");
-
-                      for(var i = 0; i < paragraphs.length; i++)
-                      {
-                          var innerText = paragraphs[i].innerText;
-                          var innerTextSplit = innerText.split("");
-                          paragraphs[i].innerText = ""
-
-                          for(var j = 0; j < innerTextSplit.length; j++) {
-                            if (typography) {
-                              var randomColor = getRandomColor();
-                              var randomSize = getFontSize();
-                              var font = getRandomFont();
-                            }
-                            else {
-                              var randomColor = "black";
-                              var randomSize = 14;
-                              var font = "font-family: 'Lora', serif;";
-                            }
-
-                              innerTextSplit[j] = '<span style="color: ' + randomColor + ';' + font + ';' + 'font-size:' + randomSize + 'pt' + '">' + innerTextSplit[j] + '</span>';
-                              paragraphs[i].innerHTML += innerTextSplit[j];
-                          }
-                      }
+              typographyBool = true;
+              randomTypog(typographyBool);
             }
             else {
-              console.log("typography off");
-               var typography = false;
-               var paragraphs = document.getElementsByClassName("poem");
-
-                     for(var i = 0; i < paragraphs.length; i++)
-                     {
-                         var innerText = paragraphs[i].innerText;
-                         var innerTextSplit = innerText.split("");
-                         paragraphs[i].innerText = ""
-
-                         for(var j = 0; j < innerTextSplit.length; j++) {
-                           if (typography) {
-                             var randomColor = getRandomColor();
-                             var randomSize = getFontSize();
-                             var font = getRandomFont();
-                           }
-                           else {
-                             var randomColor = "black";
-                             var randomSize = 14;
-                             var font = "font-family: 'Lora', serif;";
-                           }
-
-                             innerTextSplit[j] = '<span style="color: ' + randomColor + ';' + font + ';' + 'font-size:' + randomSize + 'pt' + '">' + innerTextSplit[j] + '</span>';
-                             paragraphs[i].innerHTML += innerTextSplit[j];
-                         }
-                     }
+              typographyBool = false;
+              randomTypog(typographyBool);
             }
-        }
+        };
 
     </script>
 
