@@ -1,6 +1,6 @@
 import random
 from flask import Flask, render_template, request
-app = App(__name__)
+app = Flask(__name__)
 import jinja2
 
 @app.route('/', methods = ['POST', 'GET'])
@@ -147,4 +147,4 @@ def index():
     return render_template('index.html', poem = poem_list)
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug = True, port=33507)
