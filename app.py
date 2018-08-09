@@ -1,6 +1,6 @@
 import random
 from flask import Flask, render_template, request
-app = Flask(__name__)
+app = App(__name__)
 import jinja2
 
 @app.route('/', methods = ['POST', 'GET'])
