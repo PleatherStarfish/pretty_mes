@@ -147,4 +147,5 @@ def index():
     return render_template('index.html', poem = poem_list)
 
 if __name__ == '__main__':
-    app.run(debug = True, port=33507)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug = True, port)
