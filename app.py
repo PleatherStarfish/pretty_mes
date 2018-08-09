@@ -2,9 +2,9 @@ import random
 from flask import Flask, render_template, request
 app = Flask(__name__)
 import jinja2
-from newsapi import NewsApiClient
-import json
-from pprint import pprint
+# from newsapi import NewsApiClient
+# import json
+# from pprint import pprint
 
 @app.route('/', methods = ['POST', 'GET'])
 def index():
