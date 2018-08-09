@@ -265,7 +265,8 @@
        <!-- <img src="/images/hex3.png" alt="I Ching Hexagram 3" /> -->
        <div class="arrow">&#19906;</div>
        <div id="slideout_inner">
-         <form id="slideout_inner" class="form" action = "https://prettymes.herokuapp.com/" method = "POST">
+         <!-- <form id="slideout_inner" class="form" action = "https://prettymes.herokuapp.com/" method = "POST"> -->
+         <form id="slideout_inner" class="form" action = "http://127.0.0.1:5000" method = "POST">
            <div id="pagetitle">Pretty Mes</div><br>
            <a id="about" href="https://prettymes.herokuapp.com/about.html">what is this?</a>
            <p>keyword <input type="text" name="keyword" id="formtext" /></p>
@@ -273,7 +274,7 @@
            <textarea name="text" id="input_large">Enter a source text.</textarea>
            <p>stochastic typography <input type="checkbox" id="myCheck" name="typographyCheck"  onclick="typographyOnOff()" checked></p>
            <p><input type="submit" value="submit" /></p>
-           <div id="signature">Daniel Miller<br><a href="https://github.com/bronzebygold">GitHub</a><br>2018</div>
+           <div id="signature">Daniel Miller<br>CC BY 4.0<br><a href="https://github.com/bronzebygold">GitHub</a><br>2018</div>
          </form>
        </div>
      </div>

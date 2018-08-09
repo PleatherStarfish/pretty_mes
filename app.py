@@ -2,13 +2,35 @@ import random
 from flask import Flask, render_template, request
 app = Flask(__name__)
 import jinja2
+from newsapi import NewsApiClient
+import json
+from pprint import pprint
 
 @app.route('/', methods = ['POST', 'GET'])
 def index():
+
+    api = NewsApiClient(api_key='3aaf102a1ede4e0b9bdfebe82d745148')
+    news_json = api.get_everything(sources='bbc-news, associated-press, reuters, cnn, bloomberg, cnbc', language='en')
+
+    news_string = ""
+
+    news_articles = (news_json['articles'])
+    news_counter = 0
+
+    for data in news_articles:
+        one_story = news_articles[news_counter]['description']
+        if one_story:
+            news_string += one_story
+
+        news_counter += 1
+
+    print(news_string)
+    text = news_string
+
     keyword = "John Cage"
     if request.method == 'POST':
         keyword = request.form['keyword']
-    text = open('text.txt', 'r').read()
+    # text = open('text.txt', 'r').read()
     if request.method == 'POST':
         user_entered_text = request.form['text']
         if (len(user_entered_text) > 1000):
