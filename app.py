@@ -18,14 +18,15 @@ def index():
     news_counter = 0
 
     for data in news_articles:
+
         one_story = news_articles[news_counter]['description']
+
         if one_story:
             news_string += one_story
             news_string += ' '
 
         news_counter += 1
 
-    print(news_string)
     text = news_string
 
     keyword = "John Cage"
