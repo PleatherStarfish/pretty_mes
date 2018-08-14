@@ -20,7 +20,8 @@ def index():
     for data in news_articles:
         one_story = news_articles[news_counter]['description']
         if one_story:
-            news_string += one_story
+            news_string += one_story}
+            news_string += " "
 
         news_counter += 1
 
