@@ -1,4 +1,4 @@
-# prtty_mes
+# pretty_mes
 
 Pretty Mes is a tiny Flask application that creates mesostic poems (a type of visual poetry) from current news headlines. Pretty Mes is deployed on Heroku and can be found at https://prettymes.herokuapp.com.
 
