@@ -4,4 +4,4 @@
 
 Pretty Mes is a Flask app that parses current news headlines to generate "mesostics" (a type of procedural poem) and generative typographies from current news headlines in the style of American experimental artist John Cage. Pretty Mes is deployed on Heroku and can be found at https://prettymes.herokuapp.com.
 
-A Medium [blog post](https://medium.com/@bronze_by_gold/a-flask-app-for-generative-visual-poetry-from-news-headlines-4eb469e9d7ee) offers more details on the tech used to create Pretty Mes.
+A [blog post](https://medium.com/@bronze_by_gold/a-flask-app-for-generative-visual-poetry-from-news-headlines-4eb469e9d7ee) on Medium details the motivations for this app as well as the tech stack and datastructures that support Pretty Mes.
